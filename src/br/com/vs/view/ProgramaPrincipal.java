@@ -27,10 +27,10 @@ public class ProgramaPrincipal {
 				produtos.add(lojaControle.cadastrarProduto());
 				break;
 			case 2:
-				lojaControle.consultarProdutos(produtos);
+				lojaControle.listarProdutos(produtos);
 				break;		
 			case 3:
-				
+				lojaControle.editarProduto(produtos);
 				break;
 			case 9:
 				sair = true;

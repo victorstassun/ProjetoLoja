@@ -47,14 +47,56 @@ public class LojaControle {
 		return produtoModel;
 	}
 	
-	public void consultarProdutos(List<ProdutoModel>produtos) {
+	public List<ProdutoModel> listarProdutos(List<ProdutoModel>produtos) {
 		System.out.println("--- PRODUTOS CADASTRADOS ---");
 		System.out.printf(" | %10s | %8s | %4s | %9s |\n" , "Produto", "Preço", "Quantidade", "R$ Total" );
-		for (ProdutoModel produtoModel : produtos) {
-			System.out.println(produtoModel);
-			System.out.println("\n-------------------------\n");
+			
+		produtos.forEach(produto -> {
+				System.out.printf("| %10s | %8s | %4s | %9s |\n");
+					produto.getNomeDoProduto();
+					produto.getPrecoDoProduto();
+					produto.getQuantidadeDeProduto();
+					produto.getSaldoEmEstoque();
+					
+			});
+
+		return produtos;
 		}
-		System.out.println("\n-------------------------\n");
-		try { Thread.sleep (1000); } catch (InterruptedException ex) {}
+	
+	public ProdutoModel editarProduto(List<ProdutoModel>produtos) {
+		ProdutoModel produto = new ProdutoModel();
+		int IdDoProduto, indexDoCampo;
+		
+		System.out.println("--- EDITAR DADOS DE PRODUTO ---");
+		System.out.print("Informe o ID do produto: ");
+		IdDoProduto = scanner.nextInt();
+		
+		System.out.println("--- CAMPOS ---");
+		System.out.println("1) Nome do produto");
+		System.out.println("2) Preço unitário");
+		System.out.println("3) Quantidade");
+		System.out.print("Informe o campo que deseja editar: ");
+		indexDoCampo = scanner.nextInt();
+		
+		switch (indexDoCampo) {
+		
+		case 1: 
+			System.out.println("Informe o novo nome para o produto: ");
+			produto.setNomeDoProduto(scanner.next());
+			
+			produto.setPrecoDoProduto(produtos.get(IdDoProduto).getPrecoDoProduto());
+			produto.setQuantidadeDeProduto(produtos.get(IdDoProduto).getQuantidadeDeProduto());
+			produto.setSaldoEmEstoque(produtos.get(IdDoProduto).getSaldoEmEstoque());
+			
+			produtos.set(IdDoProduto, produto);
+			break;
+		
+		default: 
+				
+			break;
+		}
+		
+		return null;
 	}
 }
+
