@@ -49,6 +49,7 @@ public class LojaControle {
 	
 	public void consultarProdutos(List<ProdutoModel>produtos) {
 		System.out.println("--- PRODUTOS CADASTRADOS ---");
+		System.out.printf(" | %10s | %8s | %4s | %9s |\n" , "Produto", "Preço", "Quantidade", "R$ Total" );
 		for (ProdutoModel produtoModel : produtos) {
 			System.out.println(produtoModel);
 			System.out.println("\n-------------------------\n");
